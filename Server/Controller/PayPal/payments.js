@@ -2,8 +2,8 @@
 const paypal = require('paypal-rest-sdk');
 const app = require("express").Router();
 
-const CLIENT_ID = "AaYmmH_gIML2YEO4SrcSuoTd5Lj8WTLGWMIlOSRlQsgl79fUM1TmHtVaMyT2F5xaqERHD4OLr1uavEDZ";
-const CLIENT_SECRET = "ELIm-4Qsen4C_ep61oWh86qS3n8x5csFclFHS0noAoAE7QXotknJzENKXC7W_AhE-0ijEeuqgLX1eEKg"
+const CLIENT_ID = "*************************************************************************************";
+const CLIENT_SECRET = "**********************************************************************************"
 
 // Configure PayPal SDK
 paypal.configure({
