@@ -8,6 +8,7 @@ const passport = require('passport');
 const cookieSession = require("cookie-session");
 const passportSetup = require("./Controller/passport");
 const authRoute = require("./Controller/auth");
+const paypalRoute = require("./Controller/PayPal/payments");
 
 const corsOptions = { // cross origin resource sharing
     origin: "http://localhost:3000",
@@ -31,6 +32,8 @@ app.use(passport.session());  //Maintain session - logging out
 app.use(cors(corsOptions));
 app.use('/', route);
 app.use('/auth', authRoute);
+app.use('/api/paypal/', paypalRoute); 
+
 
 const Port = 5500;
 const Hostname = 'localhost';

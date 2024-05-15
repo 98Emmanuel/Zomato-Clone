@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import './Style/detailPage.css';
+const BASE_URL = "http://localhost:5500" 
 
 const customStyles = {
     overlay:{
@@ -90,6 +91,18 @@ class Details extends React.Component{
 
     }
 
+    // Payment - Paypal
+    paypalPayment = async() =>{
+        const { subtotal } = this.state;
+
+        try {
+                const response = await axios.post(`${BASE_URL}/api/paypal/pay`, { amount: subtotal });
+                window.location.href = response.data;
+        } catch (error) {
+              console.error('Error initiating payment:', error);
+        }
+    }
+
     render(){
         const { restaurant, galleryModal, menuModal, menu, subtotal, formModal } = this.state;
         //console.log(menu)
@@ -101,10 +114,10 @@ class Details extends React.Component{
                         <div class="navbar-brand text-danger circle">
                             <h2 class="logo">e!</h2>
                         </div>
-                        <form class="d-flex nav-form">
+                        {/*<form class="d-flex nav-form">
                             <button type="button" class="btn btn-danger">Login</button>
                             <button type="button" class="btn btn-outline-light">Create an account</button>
-                        </form>
+        </form>*/}
                     </div>
                 </nav>
 
@@ -255,6 +268,9 @@ class Details extends React.Component{
                         </textarea>
 
                         <button className="btn btn-success" style={{ float: "right", marginTop: "18px" }}>Proceed</button>
+                        <button className="btn btn-primary px-4" style={{ marginTop: "18px" }} onClick={this.paypalPayment}>
+                            <img src="https://www.edigitalagency.com.au/wp-content/uploads/PayPal-logo-white-png-horizontal.png" alt="razorpay" style={{ height: '25px'}} />
+                        </button>
                     </div>
         
       </Modal>
