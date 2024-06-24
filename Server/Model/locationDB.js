@@ -10,3 +10,8 @@ const locationSchema = new Schema({
 })
 
 module.exports = mongoose.model('locationData', locationSchema, 'location')
+
+
+
+
+
